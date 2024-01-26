@@ -24,7 +24,7 @@ EOF
 systemctl enable bdd.service
 systemctl daemon-reload
 
-sudo -u web git clone https://@github.com/basilelt/devcloud
+sudo -u web git clone https://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@github.com/basilelt/devcloud
 cd /home/web/devcloud/bdd
 
 systemctl start bdd.service
