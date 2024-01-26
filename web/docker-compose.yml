@@ -40,7 +40,6 @@ services:
 networks:
   back_nginx:
   back_django:
-  back_db:
 
 volumes:
   static:
