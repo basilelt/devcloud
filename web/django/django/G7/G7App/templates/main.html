@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    {% block css %}
+    {% endblock %}
+    {% block css2 %}
+    {% endblock %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{%static '/G7App/index.css'%}">
+    <link rel="stylesheet" type="text/css" href="{%static '/G7App/message.css'%}">
+    <link rel="shortcut icon" type="image/jpeg" href="{%static '/G7App/image/traficaerien.jpeg'%}" >
+    <title>
+        {% block title %}
+        {% endblock %}
+    </title>
+</head>
+
+<body>
+    <header>
+        {% block header%}
+            <h1>Gestion du Trafic Aérien</h1>
+        {% endblock %}
+    </header>
+    
+    {% block sidebar %}
+        <nav>
+            <ul>
+                <li><a href="/G7App/index">Accueil</a></li>
+                <li><a href="/G7App/aeroport/liste">Aéroports</a></li>
+                <li><a href="/G7App/piste_aeroport/liste">Pistes d'atterrissage</a></li>
+                <li><a href="/G7App/compagnie/liste">Compagnies</a></li>
+                <li><a href="/G7App/type_avion/liste">Types d'avions</a></li>
+                <li><a href="/G7App/avion/liste">Avions</a></li>
+                <li><a href="/G7App/vol/liste">Vols</a></li>
+                {% if user.is_authenticated %}
+                    <li>{{ user.get_username }}</li>
+                    <li><a href="/accounts/logout/">Déconnexion</a></li>
+                {% else %}
+                    <li><a href="/accounts/login/?next={{ request.path }}">Connexion</a></li>
+                {% endif %}
+            </ul>
+          </nav>
+    {% endblock %}
+
+    {% block content %}
+    {% endblock %}
+
+    {% block content2 %}
+    {% endblock %}
+
+</body>
+
+</html>

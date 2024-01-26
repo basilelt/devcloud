@@ -1,0 +1,41 @@
+{% extends "G7App/liste.html" %}
+
+{% block title %}
+    Liste des Compagnies
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <a href="/G7App/compagnie/ajouter/" class="btn">Ajouter une Compagnie</a>
+    <h2>Liste des Compagnies</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Pays de Rattachement</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for compagnie in compagnies %}
+                <tr>
+                    <td>{{ compagnie.nom }}</td>
+                    <td>{{ compagnie.description }}</td>
+                    <td>{{ compagnie.pays_rattachement }}</td>
+                    <td>
+                        <form>
+                            <a href="/G7App/compagnie/modifier/{{compagnie.id}}/" class="btn-modifier">Modifier</a>
+                            <a href="/G7App/compagnie/supprimer/{{compagnie.id}}/" class="btn-supprimer">Supprimer</a>
+                        </form>
+                    </td>
+                </tr>
+            {% empty %}
+            <tr>
+                <td colspan="2">Aucune Compagnie enregistré.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

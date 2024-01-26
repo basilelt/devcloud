@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Téléchargement de la fiche des vols</title>
+</head>
+<body>
+    <h1>Téléchargement de la fiche des vols</h1>
+    
+    <p>Cliquez sur le bouton ci-dessous pour télécharger la fiche des vols :</p>
+    
+    <a href="{% url 'fiche_vols_depart_aeroport' %}" download="fiche_vols_depart_aeroport.pdf">
+        <button>Télécharger la fiche des vols</button>
+    </a>
+</body>
+</html>

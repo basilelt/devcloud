@@ -1,0 +1,16 @@
+{% extends "G7App/modifier.html" %}
+
+{% block content %}
+    <div class="container">
+        <h2>Modifier l'aéroport "{{ aeroport.nom }}"</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.nom.label_tag }}
+            {{ form.nom }}
+            {{ form.pays.label_tag }}
+            {{ form.pays }}
+            <button type="submit" class="btn-modifier">Modifier</button>
+            <a href="/G7App/aeroport/liste/" class="btn-annuler">Annuler</a>
+        </form>
+    </div>
+{% endblock %}

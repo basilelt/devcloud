@@ -1,0 +1,15 @@
+{% extends "G7App/supprimer.html" %}
+
+{% block content %}
+    <div class="container">
+        <h2>Supprimer le vol</h2>
+        <p>Voulez-vous vraiment supprimer le vol {{ vol.id }} partant de {{ vol.aeroport_depart.nom }} le 
+           {{ vol.date_heure_depart }} à destination de {{ vol.aeroport_arrivee.nom }}?</p>
+        <form>
+            <div class="confirmation-buttons">
+                <a href="/G7App/vol/supprimer_confirm/{{vol.id}}/" class="btn-supprimer">Confirmer la suppression</a>
+                <a href="/G7App/vol/liste/" class="btn-annuler">Annuler</a>
+            </div>
+        </form>
+    </div>
+{% endblock %}

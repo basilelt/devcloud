@@ -1,0 +1,75 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+}
+
+thead {
+  background-color: whitesmoke;
+}
+
+tr:nth-child(even) {
+  background-color: whitesmoke;
+}
+
+.btn {
+  background-color: green;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.btn a {
+  color: white;
+  text-decoration: none;
+}
+
+.btn-modifier,
+.btn-supprimer,
+.btn-vols {
+  width: 85px;
+  height: 30px;
+  color: white;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 4px;
+  display: inline-block;
+  line-height: 30px;
+
+}
+
+.btn-modifier {
+  background-color: green;
+}
+
+.btn-supprimer {
+  background-color: red;
+}
+
+.btn-vols{
+  background-color: rgb(56, 82, 175);
+}

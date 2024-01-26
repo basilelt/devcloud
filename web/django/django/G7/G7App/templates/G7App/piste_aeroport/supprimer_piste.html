@@ -1,0 +1,14 @@
+{% extends "G7App/supprimer.html" %}
+
+{% block content %}
+    <div class="container">
+        <h2>Supprimer la Piste</h2>
+        <p>Voulez-vous vraiment supprimer la piste numéro "{{ pistes.numero }}" de l'aeroport "{{ pistes.aeroport.nom }}"?</p>
+        <form>
+            <div class="confirmation-buttons">
+                <a href="/G7App/piste_aeroport/supprimer_confirm/{{pistes.id}}/" class="btn-supprimer">Confirmer la suppression</a>
+                <a href="/G7App/piste_aeroport/liste/" class="btn-annuler">Annuler</a>
+            </div>
+        </form>
+    </div>
+{% endblock %}

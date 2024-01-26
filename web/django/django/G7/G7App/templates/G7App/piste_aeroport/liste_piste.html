@@ -1,0 +1,41 @@
+{% extends "G7App/liste.html" %}
+
+{% block title %}
+    Liste des Pistes
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <a href="/G7App/piste_aeroport/ajouter/" class="btn">Ajouter une piste</a>
+    <h2>Liste des Pistes</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Numero</th>
+                <th>Aeroport</th>
+                <th>Longeur</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for piste in pistes %}
+                <tr>
+                    <td>{{ piste.numero }}</td>
+                    <td>{{ piste.aeroport.nom }}</td>
+                    <td>{{ piste.longueur }}</td>
+                    <td>
+                        <form>
+                            <a href="/G7App/piste_aeroport/modifier/{{piste.id}}/" class="btn-modifier">Modifier</a>
+                            <a href="/G7App/piste_aeroport/supprimer/{{piste.id}}/" class="btn-supprimer">Supprimer</a>
+                        </form>
+                    </td>
+                </tr>
+            {% empty %}
+            <tr>
+                <td colspan="2">Aucune Pistes enregistré.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

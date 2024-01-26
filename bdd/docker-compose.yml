@@ -1,0 +1,13 @@
+version: '3'
+services:
+  db:
+    # will build ./SQL/Dockerfile
+    build: ./SQL
+    volumes:
+      - database:/var/lib/mysql
+    restart: unless-stopped
+    ports:
+     - "3306:3306"
+
+volumes:
+  database:

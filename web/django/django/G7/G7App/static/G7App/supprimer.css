@@ -1,0 +1,49 @@
+.container {
+    margin: 20px;
+    padding: 20px;
+    background-color: whitesmoke;
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+p {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.confirmation-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-supprimer {
+    background-color: green;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn-annuler {
+    background-color: red;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.btn-annuler:hover,
+.btn-supprimer:hover {
+    opacity: 0.8;
+}
+

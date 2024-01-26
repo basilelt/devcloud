@@ -1,0 +1,36 @@
+{% extends "main.html" %}
+
+{% block css %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'G7App/login.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="login-form">
+        {% if form.errors %}
+            <p>Votre nom d'utilisateur et mot de passe ne correspondent pas. Veuillez réessayer.</p>
+        {% endif %}
+
+        {% if next %}
+            {% if user.is_authenticated %}
+                <p>Votre compte n'a pas accès à cette page. Pour continuer, veuillez vous connecter avec un compte ayant accès.</p>
+            {% else %}
+                <p>Merci de vous connecter pour avoir accès à cette page.</p>
+            {% endif %}
+        {% endif %}
+
+        <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_username">{{ form.username.label_tag }}</label>
+                {{ form.username }}
+            </div>
+            <div class="form-group">
+                <label for="id_password">{{ form.password.label_tag }}</label>
+                {{ form.password }}
+            </div>
+            <input type="submit" value="Login" class="btn-login">
+            <input type="hidden" name="next" value="{{ next }}">
+        </form>
+    </div>
+{% endblock %}

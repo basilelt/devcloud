@@ -1,0 +1,14 @@
+{% extends "G7App/supprimer.html" %}
+
+{% block content %}
+    <div class="container">
+        <h2>Supprimer la Compagnie</h2>
+        <p>Voulez-vous vraiment supprimer la Compagnie "{{ compagnies.nom }}"?</p>
+        <form>
+            <div class="confirmation-buttons">
+                <a href="/G7App/compagnie/supprimer_confirm/{{compagnies.id}}/" class="btn-supprimer">Confirmer la suppression</a>
+                <a href="/G7App/compagnie/liste/" class="btn-annuler">Annuler</a>
+            </div>
+        </form>
+    </div>
+{% endblock %}

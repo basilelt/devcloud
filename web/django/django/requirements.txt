@@ -1,0 +1,5 @@
+django
+daphne
+mysqlclient
+pillow
+xhtml2pdf

@@ -1,0 +1,114 @@
+{% extends "G7App/ajouter.html" %}
+
+{% block title %}
+    Ajouter un Vol
+{% endblock %}
+
+{% block subtitle %}
+    <h2> Ajouter un Vol </h2>
+{% endblock %} 
+
+{% block form %}
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="avion">Avion:</label>
+        {{ form.avion }}
+    </div>
+
+    <div class="form-group">
+        <label for="pilote">Pilote:</label>
+        {{ form.pilote }}
+    </div>
+
+    <div class="form-group">
+        <label for="aeroport_depart">Aéroport de Décollage:</label>
+        {{ form.aeroport_depart }}
+    </div>
+
+    <div class="form-group">
+        <label for="piste_depart">Piste de Décollage:</label>
+        {{ form.piste_depart }}
+    </div>
+
+    <div class="form-group">
+        <label for="date_heure_depart">Date de Décollage (dd/mm/yyyy hh:mm:ss):</label>
+        {{ form.date_heure_depart }}
+    </div>
+
+    <div class="form-group">
+        <label for="aeroport_arrivee">Aéroport d'Atterrissage:</label>
+        {{ form.aeroport_arrivee }}
+    </div>
+
+    <div class="form-group">
+        <label for="piste_arrivee">Piste d'Atterrissage:</label>
+        {{ form.piste_arrivee }}
+    </div>
+
+    <div class="form-group">
+        <label for="date_heure_arrivee">Date d'Atterrissage (dd/mm/yyyy hh:mm:ss):</label>
+        {{ form.date_heure_arrivee }}
+    </div>
+    
+{% endblock %}
+
+{% block content2 %}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Runway select field change event
+            $('#id_aeroport_depart').change(function() {
+                var selectedAirport = $(this).val();  // Get the selected airport ID
+                // Make an AJAX request to fetch the runways for the selected airport
+                $.ajax({
+                    url: '/G7App/vol/pistes/' + selectedAirport + '/',  // Replace with the actual URL to retrieve runways
+
+                    success: function(data) {
+                        // Clear the current runway options
+                        $('#id_piste_depart').empty();
+                        // Add the new runway options
+                        $.each(data, function(key, value) {
+                            $('#id_piste_depart').append($('<option></option>').attr('value', value.id).text(value.numero));
+                        });
+                    }
+                });
+            });
+
+            // Trigger the change event for the pre-filled airport
+            $('#id_aeroport_depart').trigger('change')
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            // Runway select field change event
+            $('#id_aeroport_arrivee').change(function() {
+                var selectedAirport = $(this).val();  // Get the selected airport ID
+                // Make an AJAX request to fetch the runways for the selected airport
+                $.ajax({
+                    url: '/G7App/vol/pistes/' + selectedAirport + '/',  // Replace with the actual URL to retrieve runways
+
+                    success: function(data) {
+                        // Clear the current runway options
+                        $('#id_piste_arrivee').empty();
+                        // Add the new runway options
+                        $.each(data, function(key, value) {
+                            $('#id_piste_arrivee').append($('<option></option>').attr('value', value.id).text(value.numero));
+                        });
+                    }
+                });
+            });
+            
+            // Trigger the change event for the pre-filled airport
+            $('#id_aeroport_arrivee').trigger('change')
+        });
+    </script>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endblock %}

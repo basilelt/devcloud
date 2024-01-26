@@ -1,0 +1,53 @@
+{% extends "G7App/liste.html" %}
+
+{% block title %}
+    Liste des Types d'Avions
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <a href="/G7App/type_avion/ajouter/" class="btn">Ajouter un Type d'Avion</a>
+    <h2>Liste des Types d'Avions</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Marque</th>
+                <th>Modèle</th>
+                <th>Description</th>
+                <th>Images</th>
+                <th>Longueur de Piste Nécessaire</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for type in types %}
+                <tr>
+                    <td>{{ type.marque }}</td>
+                    <td>{{ type.modele }}</td>
+                    <td>{{ type.description }}</td>
+                    <td>
+                        {% block css2 %}
+                            {% load static %}
+                            <link rel="stylesheet" type="text/css" href="{%static '/G7App/image.css'%}">
+                            {% if type.images %}
+                                <img type="image" src="{{ type.images.url }}" alt="Image">
+                            {% endif %}
+                        {% endblock %}
+                    </td>
+                    <td>{{ type.longueur_piste_necessaire }}</td>
+                    <td>
+                        <form>
+                            <a href="/G7App/type_avion/modifier/{{type.id}}/" class="btn-modifier">Modifier</a>
+                            <a href="/G7App/type_avion/supprimer/{{type.id}}/" class="btn-supprimer">Supprimer</a>
+                        </form>
+                    </td>
+                </tr>
+            {% empty %}
+            <tr>
+                <td colspan="2">Aucun Type d'Avions enregistrées.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

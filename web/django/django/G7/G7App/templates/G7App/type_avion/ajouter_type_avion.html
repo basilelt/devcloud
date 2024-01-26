@@ -1,0 +1,37 @@
+{% extends "G7App/ajouter.html" %}
+
+{% block title %}
+    Ajouter un type d'avion
+{% endblock %}
+
+{% block subtitle %}
+    <h2> Ajouter un type d'avion </h2>
+{% endblock %} 
+
+{% block form %}
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="id_marque">Marque:</label>
+        {{ form.marque }}
+    </div>
+
+    <div class="form-group">
+        <label for="id_modele">Modele d'avion:</label>
+        {{ form.modele }}
+    </div>
+
+    <div class="form-group">
+        <label for="id_description">Description du Type d'Avion:</label>
+        {{ form.description }}
+    </div>
+
+    <div class="form-group">
+        <label for="id_images">Images du Type d'Avions:</label>
+        {{ form.images }}
+    </div>
+
+    <div class="form-group">
+        <label for="id_longueur_piste_necessaire">Longueur de piste necessaire pour le type d'avion:</label>
+        {{ form.longueur_piste_necessaire }}
+    </div>
+{% endblock %}

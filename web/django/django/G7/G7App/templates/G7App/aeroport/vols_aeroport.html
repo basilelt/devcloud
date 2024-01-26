@@ -1,0 +1,92 @@
+{% extends "G7App/liste.html" %}
+
+{% block title %}
+    Liste des vols de l'aéroport {{ aeroport.nom }}
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h2>Liste des départs</h2>
+        <a href="/G7App/aeroport/ajouter_vols_depart/{{aeroport.id}}/" class="btn">Ajouter des vols</a>
+        <a href="/G7App/aeroport/vols_depart/{{aeroport.id}}/" class="btn">Fiche des vols</a>
+        <table>
+            <thead>
+                <tr>
+                    <th>Avions</th>
+                    <th>Pilote</th>
+                    <th>Piste départ</th>
+                    <th>Date et heure de départ</th>
+                    <th>Aéroport d'arrivée</th>
+                    <th>Piste arrivée</th>
+                    <th>Date et heure d'arrivée</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for vol in vols_depart %}
+                    <tr>
+                        <td>{{ vol.avion.nom }}</td>
+                        <td>{{ vol.pilote }}</td>
+                        <td>{{ vol.piste_depart.numero }}</td>
+                        <td>{{ vol.date_heure_depart }}</td>
+                        <td>{{ vol.aeroport_arrivee.nom }}</td>
+                        <td>{{ vol.piste_arrivee.numero }}</td>
+                        <td>{{ vol.date_heure_arrivee }}</td>
+
+                        <td>
+                            <form>
+                                <a href="/G7App/vol/modifier/{{vol.id}}/" class="btn-modifier">Modifier</a>
+                                <a href="/G7App/vol/supprimer/{{vol.id}}/" class="btn-supprimer">Supprimer</a>
+                            </form>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="2">Aucun Vol enregistré.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <h2>Liste des arrivées</h2>
+        <a href="/G7App/aeroport/ajouter_vols_arrivee/{{aeroport.id}}/" class="btn">Ajouter des vols</a>
+        <a href="/G7App/aeroport/vols_arrivee/{{aeroport.id}}/" class="btn">Fiche des vols</a>
+        <table>
+            <thead>
+                <tr>
+                    <th>Avions</th>
+                    <th>Pilote</th>
+                    <th>Aéroport de départ</th>
+                    <th>Piste départ</th>
+                    <th>Date et heure de départ</th>
+                    <th>Piste arrivée</th>
+                    <th>Date et heure d'arrivée</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for vol in vols_arrivee %}
+                    <tr>
+                        <td>{{ vol.avion.nom }}</td>
+                        <td>{{ vol.pilote }}</td>
+                        <td>{{ vol.aeroport_depart.nom }}</td>
+                        <td>{{ vol.piste_depart.numero }}</td>
+                        <td>{{ vol.date_heure_depart }}</td>
+                        <td>{{ vol.piste_arrivee.numero }}</td>
+                        <td>{{ vol.date_heure_arrivee }}</td>
+
+                        <td>
+                            <form>
+                                <a href="/G7App/vol/modifier/{{vol.id}}/" class="btn-modifier">Modifier</a>
+                                <a href="/G7App/vol/supprimer/{{vol.id}}/" class="btn-supprimer">Supprimer</a>
+                            </form>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="2">Aucun Vol enregistré.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+    </div>
+{% endblock %}

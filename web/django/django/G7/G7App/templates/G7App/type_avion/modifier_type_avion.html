@@ -1,0 +1,26 @@
+{% extends "G7App/modifier.html" %}
+
+{% block content %}
+    <div class="container">
+        <h2>Modifier le Type d'avions "{{ types.marque }} {{ types.modele }}"</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.marque.label_tag }}
+            {{ form.marque }}
+            {{ form.modele.label_tag }}
+            {{ form.modele }}
+            {{ form.description.label_tag }}
+            {{ form.description }}
+            <div class="form-group">
+                <label for="id_images">Images du Type d'Avions:</label>
+                {{ form.image.label_tag }}
+                {{ form.images }}
+            </div>
+            {{ form.longueur_piste_necessaire.label_tag }}
+            {{ form.longueur_piste_necessaire }}
+
+            <button type="submit" class="btn-modifier">Modifier</button>
+            <a href="/G7App/type_avion/liste/" class="btn-annuler">Annuler</a>
+        </form>
+    </div>
+{% endblock %}

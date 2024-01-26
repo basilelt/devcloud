@@ -1,0 +1,41 @@
+{% extends "main.html" %}
+
+{% block css %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{%static '/G7App/ajouter.css'%}">
+{% endblock %}
+
+{% block content %}
+    {% block subtitle %}
+    {% endblock %}
+    
+    <div class="container">
+        {% block method %}
+            <form method="post" enctype="multipart/form-data">
+        {% endblock %}
+           
+            {% block form %}
+            {% endblock %}
+            
+            <button class="btn" type="submit">Enregistrer</button>
+        </form>
+    </div>
+
+    {%block text %}
+    {% endblock %}
+
+    {% if form.errors %}
+        {% for field in form %}
+            {% for error in field.errors %}
+                <div class="alert alert-danger">
+                    <strong>{{ error|escape }}</strong>
+                </div>
+            {% endfor %}
+        {% endfor %}
+        {% for error in form.non_field_errors %}
+            <div class="alert alert-danger">
+            <strong>{{ error|escape }}</strong>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endblock %}

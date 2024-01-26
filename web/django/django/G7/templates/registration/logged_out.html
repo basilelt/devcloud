@@ -1,0 +1,11 @@
+{% extends "main.html" %}
+
+{% block css %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'G7App/deconnexion.css' %}">
+{% endblock %}
+
+{% block content %}
+    <p>Déconnecté !</p>
+    <a href="{% url 'login' %}">Cliquez ici pour vous reconnecter.</a>
+{% endblock %}

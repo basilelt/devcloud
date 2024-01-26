@@ -1,0 +1,22 @@
+{% extends "G7App/modifier.html" %}
+
+{% block content %}
+    <div class="container">
+        <h2>Modifier la Piste d'Aeroport "{{ pistes.numero }}" de l'aeroport "{{ pistes.aeroport.nom }}"</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.numero.label_tag }}
+            {{ form.numero }}
+            {{ form.longueur.label_tag }}
+            {{ form.longueur }}
+            <label for="aeroport">Aeroport:</label>
+            <select name="aeroport" id="aeroport" required>
+                {% for aeroport in aeroports %}
+                <option value="{{ aeroport.id }}">{{ aeroport.nom }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit" class="btn-modifier">Modifier</button>
+            <a href="/G7App/piste_aeroport/liste/" class="btn-annuler">Annuler</a>
+        </form>
+    </div>
+{% endblock %}

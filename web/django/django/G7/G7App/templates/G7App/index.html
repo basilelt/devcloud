@@ -1,0 +1,14 @@
+{% extends "main.html" %}
+
+{% block title %}
+    Gestion du Trafic Aérien
+{% endblock %}
+
+{% block content %}
+    <main>
+        <h2>Bienvenue dans l'interface de gestion du trafic aérien</h2>
+        <p>Sélectionnez une option dans le menu ci-dessus pour commencer.</p>
+        {% load static %}
+        <img id=fond src="{%static '/G7App/image/traficaerien.jpeg'%}" alt="Image Trafic Aérien">
+    </main>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends "G7App/ajouter.html" %}
+
+{% block css2 %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static '/G7App/vols_traitement.css' %}">
+{% endblock %}
+
+{% block title %}
+    Ajouter des vols à un aéroport
+{% endblock %}
+
+{% block subtitle %}
+    <h2> Ajouter des départs de vols à l'aéroport {{ aeroport.nom }} </h2>
+{% endblock %} 
+
+{% block form %}  
+    {% block method %}
+        <form method="post" action="{% url 'ajouter_vols_depart_traitement' aeroport.id %}" enctype="multipart/form-data">
+    {% endblock %}
+    
+    {% csrf_token %}
+    <div class="form-group">
+        <input type="file" name="csv_file">
+    </div>
+{% endblock %}
+
+{% block text %}
+        <h3>Le Formattage du CSV doit respecter les règles suivantes:<h3>
+        <ol>
+            <li>Ne contenir rien d'autres que les informations à rentrer</li>
+            <li>Sauter une ligne entre chaque vol</li>
+            <li>Dans l'ordre contenir:
+                <ol>
+                    <li>Le nom de l'avion (doit exister dans la base de donnée)</li>
+                    <li>Le nom du pilote</li>
+                    <li>Le numéro de la piste de départ (doit exister dans la base de donnée)</li>
+                    <li>La date et l'heure de départ au format "yyyy-mm-dd hh:mm:ss"</li>
+                    <li>Le nom de l'aéroport d'arrivée (doit exister dans la base de donnée)</li>
+                    <li>Le numéro de la piste de d'arrivée (doit exister dans la base de donnée)</li>
+                    <li>La date et l'heure d'arrivée au format "yyyy-mm-dd hh:mm:ss"</li>
+                </ol>
+            </li>
+            <li>Chaque donnée espacée d'une virgule "," sans espace non nécessaire</li>
+            <li>L'aéroport de départ est pré-rempli, il n'est pas nécessaire de l'indiquer</li>
+            <li>Tous les champs sont sensibles à la case</li>
+            <li>Il n'y a aucune verification de l'utilisation des pistes, merci de faire attention que celles-ci ne soient pas déjà occupés</li>
+        </ol>
+{% endblock %}
+
+{% block content2 %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endblock %}

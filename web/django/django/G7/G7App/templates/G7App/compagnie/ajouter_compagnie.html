@@ -1,0 +1,25 @@
+{% extends "G7App/ajouter.html" %}
+
+{% block title %}
+    Ajouter une Compagnie
+{% endblock %}
+
+{% block subtitle %}
+    <h2> Ajouter une Compagnie </h2>
+{% endblock %} 
+
+{% block form %}
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="id_nom">Nom :</label>
+        {{ form.nom }}
+    </div>
+    <div class="form-group">
+        <label for="id_description">Description :</label>
+        {{ form.description }}
+    </div>
+    <div class="form-group">
+        <label for="id_pays_rattachement">Pays de Rattachement :</label>
+        {{ form.pays_rattachement }}
+    </div>
+{% endblock %}

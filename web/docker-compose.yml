@@ -1,0 +1,46 @@
+version: '3'
+services:
+  proxy:
+    # will build ./HAProxy/Dockerfile
+    build: ./HAProxy
+    restart: unless-stopped
+    networks:
+     - back_nginx
+     - back_django
+    ports:
+     - "80:80"
+    sysctls:
+     - net.ipv4.ip_unprivileged_port_start=0
+    depends_on:
+     - "django"
+     - "nginx"
+  
+  django:
+    # will build ./django/Dockerfile
+    build: ./django
+    volumes:
+      - static:/app/G7/G7App/static
+    restart: unless-stopped
+    networks:
+     - back_django
+    hostname: django
+  
+  nginx:
+    # will build ./nginx/Dockerfile
+    build: ./nginx
+    volumes:
+      - static:/usr/share/nginx/html/static
+    restart: unless-stopped
+    networks:
+      - back_nginx
+    hostname: nginx
+    depends_on:
+      - "django"
+
+networks:
+  back_nginx:
+  back_django:
+  back_db:
+
+volumes:
+  static:

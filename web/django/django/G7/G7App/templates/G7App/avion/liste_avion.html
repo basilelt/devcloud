@@ -1,0 +1,42 @@
+{% extends "G7App/liste.html" %}
+
+{% block title %}
+    Liste des Avions
+{% endblock %}
+
+
+{% block content %}
+    <div class="container">
+        <a href="/G7App/avion/ajouter" class="btn">Ajouter un Avion</a>
+        <h2>Liste des Avion</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nom de l'Avion</th>
+                    <th>Compagnie</th>
+                    <th>Modele</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for avion in avions %}
+                <tr>
+                    <td>{{ avion.nom }}</td>
+                    <td>{{ avion.compagnie.nom }}</td>
+                    <td>{{ avion.modele.modele }}</td>
+                    <td>
+                    <form>
+                        <a href="/G7App/avion/modifier/{{avion.id}}/" class="btn-modifier">Modifier</a>
+                        <a href="/G7App/avion/supprimer/{{avion.id}}/" class="btn-supprimer">Supprimer</a>                    
+                    </form>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="2">Aucun Avion enregistré.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

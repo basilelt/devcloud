@@ -1,0 +1,14 @@
+{% extends "G7App/supprimer.html" %}
+
+{% block content %}
+    <div class="container">
+        <h2>Supprimer l'Avion</h2>
+        <p>Voulez-vous vraiment supprimer l'Avion "{{ avions.nom }}" ?</p>
+        <form>
+            <div class="confirmation-buttons">
+                <a href="/G7App/avion/supprimer_confirm/{{avions.id}}/" class="btn-supprimer">Confirmer la suppression</a>
+                <a href="/G7App/avion/liste/" class="btn-annuler">Annuler</a>
+            </div>
+        </form>
+    </div>
+{% endblock %}
