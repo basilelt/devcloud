@@ -108,7 +108,7 @@ DATABASES = {
         'USER': 'sql',
         'PASSWORD': 'MYSQLG7',
         #'HOST': 'localhost',
-        'HOST': 'bddg1.uha.fr', # for prod
+        'HOST': '10.129.4.171', # for prod
         'PORT': '3306',
     }
 }
