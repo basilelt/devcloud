@@ -109,7 +109,7 @@ DATABASES = {
         'USER': 'sql',
         'PASSWORD': 'MYSQLG7',
         #'HOST': 'localhost',
-        'HOST': '10.129.4.176', # for prod
+        'HOST': '10.129.4.171', # for prod
         'PORT': '3306',
     }
 }
