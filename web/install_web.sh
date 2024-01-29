@@ -21,7 +21,7 @@ EOF
 
 systemctl enable web.service
 systemctl daemon-reload
-
+cd /home/web/
 sudo -u web git clone https://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@github.com/basilelt/devcloud
 cd /home/web/devcloud/web
 

@@ -34,7 +34,7 @@ SECRET_KEY = 'django-insecure-8)!#z*83m0fxrjtu=-3^ois2uydks!kuysojogaw-vpfjn4a-(
 #DEBUG = True
 DEBUG = False # for prod
 
-ALLOWED_HOSTS = ['10.129.4.170']
+ALLOWED_HOSTS = ['10.129.4.176', '10.129.4.175']
 #ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 # Application definition
@@ -62,6 +62,7 @@ MIDDLEWARE = [
 
 CSRF_TRUSTED_ORIGINS = [
     "http://10.129.4.170",
+    "http://10.129.4.175",
     #"http://127.0.0.1",
     #"http://localhost",
 ]
@@ -108,7 +109,7 @@ DATABASES = {
         'USER': 'sql',
         'PASSWORD': 'MYSQLG7',
         #'HOST': 'localhost',
-        'HOST': '10.129.4.171', # for prod
+        'HOST': '10.129.4.176', # for prod
         'PORT': '3306',
     }
 }
