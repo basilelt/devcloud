@@ -34,7 +34,7 @@ SECRET_KEY = 'django-insecure-8)!#z*83m0fxrjtu=-3^ois2uydks!kuysojogaw-vpfjn4a-(
 #DEBUG = True
 DEBUG = False # for prod
 
-ALLOWED_HOSTS = ['webg1.uha.fr']
+ALLOWED_HOSTS = ['10.129.4.170']
 #ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 # Application definition
@@ -61,7 +61,7 @@ MIDDLEWARE = [
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    "http://webg1.uha.fr",
+    "http://10.129.4.170",
     #"http://127.0.0.1",
     #"http://localhost",
 ]
