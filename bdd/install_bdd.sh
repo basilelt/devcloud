@@ -2,8 +2,6 @@ apt update -y && apt upgrade -y && apt full-upgrade -y && apt dist-upgrade -y &&
 apt install -y docker.io git open-vm-tools openssh-client docker-compose sudo net-tools
 usermod -aG docker $USER
 
-hostnamectl set-hostname bdd.g1.local
-
 cat > /etc/systemd/system/bdd.service <<EOF
 [Unit]
 Description=bdd service with docker compose
