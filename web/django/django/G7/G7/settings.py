@@ -34,7 +34,7 @@ SECRET_KEY = 'django-insecure-8)!#z*83m0fxrjtu=-3^ois2uydks!kuysojogaw-vpfjn4a-(
 #DEBUG = True
 DEBUG = False # for prod
 
-ALLOWED_HOSTS = ['web.g1.local']
+ALLOWED_HOSTS = ['webg1.uha.fr']
 #ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 # Application definition
@@ -61,7 +61,7 @@ MIDDLEWARE = [
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    "http://web.g1.local",
+    "http://webg1.uha.fr",
     #"http://127.0.0.1",
     #"http://localhost",
 ]
@@ -108,7 +108,7 @@ DATABASES = {
         'USER': 'sql',
         'PASSWORD': 'MYSQLG7',
         #'HOST': 'localhost',
-        'HOST': 'bdd.g1.local', # for prod
+        'HOST': 'bddg1.uha.fr', # for prod
         'PORT': '3306',
     }
 }
