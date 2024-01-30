@@ -4,7 +4,7 @@ services:
     image: 10.129.4.176:5000/stackweb:web_django_1
     build: ./django
     volumes:
-      - static:/app/G7/G7App/static
+      - /storage/nfs/website/volumes:/app/G7/G7App/static
     restart: unless-stopped
     networks:
      - back
@@ -19,8 +19,4 @@ networks:
 
 volumes:
   static:
-    driver: local
-    driver_opts:
-      o: bind
-      type: none
-      device: /storage/nfs/website/volumes
+
