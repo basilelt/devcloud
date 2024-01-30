@@ -13,12 +13,12 @@ services:
     expose:
       - 8000
     labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.django.rule=Host(`10.129.4.176`) && not PathPrefix(`/static`)"
-      - "traefik.http.middlewares.redirect-regex.redirectregex.regex=^/$"
-      - "traefik.http.middlewares.redirect-regex.redirectregex.replacement=/G7App/index/"
-      - "traefik.http.middlewares.redirect-regex.redirectregex.permanent=true"
-      - "traefik.http.routers.django.middlewares=redirect-regex"
+      - traefik.enable=true
+      - traefik.http.routers.django.rule=Host(`10.129.4.176`) && not PathPrefix(`/static`)
+      - traefik.http.middlewares.redirect-regex.redirectregex.regex=^/$
+      - traefik.http.middlewares.redirect-regex.redirectregex.replacement=/G7App/index/
+      - traefik.http.middlewares.redirect-regex.redirectregex.permanent=true
+      - traefik.http.routers.django.middlewares=redirect-regex
   
   nginx:
     image: 10.129.4.176:5000/stackweb:web_nginx
@@ -35,7 +35,7 @@ services:
     expose:
       - 8080
     labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.django.rule=Host(`10.129.4.176`) && PathPrefix(`/static`)"
+      - traefik.enable=true
+      - traefik.http.routers.django.rule=Host(`10.129.4.176`) && PathPrefix(`/static`)
 networks:
   back:
