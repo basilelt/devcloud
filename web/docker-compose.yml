@@ -1,7 +1,7 @@
 version: '3'
 services:
   django:
-    image: 10.129.4.176:5000/stackweb:web_django_1
+    image: 10.129.4.176:5000/stackweb:web_django
     build: ./django
     volumes:
       - /storage/nfs/website/volumes:/app/G7/G7App/static
@@ -12,8 +12,20 @@ services:
     deploy:
       mode: global
   
-
-
+  nginx:
+    image: 10.129.4.176:5000/stackweb:web_nginx
+    build: ./nginx
+    volumes:
+      - /storage/nfs/website/volumes:/usr/share/nginx/html/static
+    restart: unless-stopped
+    networks:
+      - back
+    hostname: nginx
+    depends_on:
+      - "django"
+    deploy:
+      mode: global
+  
 networks:
   back:
 
