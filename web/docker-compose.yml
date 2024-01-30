@@ -7,6 +7,7 @@ services:
     networks:
      - back_nginx
      - back_django
+     - external
     ports:
      - "80:80"
     sysctls:
@@ -17,7 +18,6 @@ services:
     deploy:
       mode: replicated
       replicas: 4
-      endpoint_mode: vip
 
   django:
     # will build ./django/Dockerfile
@@ -48,6 +48,9 @@ services:
 networks:
   back_nginx:
   back_django:
+  external:
+    driver: overlay
+    attachable: true
 
 volumes:
   static:
