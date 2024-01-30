@@ -1,7 +1,7 @@
 version: '3'
 services:
   django:
-    image: 10.129.4.176:5000/stackweb:web_django
+    image: 10.129.4.176:5000/stackweb:web_django_1
     build: ./django
     volumes:
       - static:/app/G7/G7App/static
@@ -13,7 +13,7 @@ services:
       mode: global
   
   proxy:
-    image: 10.129.4.176:5000/stackweb:web_proxy
+    image: 10.129.4.176:5000/stackweb:web_proxy_1
     build: ./HAProxy
     restart: unless-stopped
     networks:
@@ -29,7 +29,7 @@ services:
       mode: global
   
   nginx:
-    image: 10.129.4.176:5000/stackweb:web_nginx
+    image: 10.129.4.176:5000/stackweb:web_nginx_1
     build: ./nginx
     volumes:
       - static:/usr/share/nginx/html/static
