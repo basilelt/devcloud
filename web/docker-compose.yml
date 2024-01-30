@@ -7,16 +7,43 @@ services:
       - static:/app/G7/G7App/static
     restart: unless-stopped
     networks:
-     - back_django
+     - back
     hostname: django
     deploy:
       mode: global
   
-
+  proxy:
+    image: 10.129.4.176:5000/stackweb:web_proxy
+    build: ./HAProxy
+    restart: unless-stopped
+    networks:
+     - back
+    ports:
+     - "80:80"
+    sysctls:
+     - net.ipv4.ip_unprivileged_port_start=0
+    depends_on:
+     - "django"
+     - "nginx"
+    deploy:
+      mode: global
+  
+  nginx:
+    image: 10.129.4.176:5000/stackweb:web_nginx
+    build: ./nginx
+    volumes:
+      - static:/usr/share/nginx/html/static
+    restart: unless-stopped
+    networks:
+      - back
+    hostname: nginx
+    depends_on:
+      - "django"
+    deploy:
+      mode: global
 
 networks:
-  back_nginx:
-  back_django:
+  back:
 
 volumes:
   static:
