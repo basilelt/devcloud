@@ -4,7 +4,7 @@ services:
     image: 10.129.4.176:5000/stackweb:web_django
     build: ./django
     volumes:
-      - /storage/nfs/website/volumes:/app/G7/G7App/static
+      - /storage/nfs/website/volumes/static:/app/G7/G7App/static
     networks:
      - back
     hostname: django
@@ -15,7 +15,7 @@ services:
     image: 10.129.4.176:5000/stackweb:web_nginx
     build: ./nginx
     volumes:
-      - /storage/nfs/website/volumes:/usr/share/nginx/html/static
+      - /storage/nfs/website/volumes/static:/usr/share/nginx/html/static
     networks:
       - back
     hostname: nginx
