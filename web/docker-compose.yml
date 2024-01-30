@@ -51,6 +51,6 @@ volumes:
   static:
     driver: local
     driver_opts:
-      o: bind
-      type: none
-      device: /storage/nfs/website/volumes
+      type: nfs
+      o: addr=10.129.4.48,rw
+      device: :/volume1/TP/g1/website/volumes
