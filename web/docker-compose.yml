@@ -1,7 +1,7 @@
 version: '3'
 services:
   proxy:
-    # will build ./HAProxy/Dockerfile
+    image: 10.129.4.176:5000/stackweb:proxy
     build: ./HAProxy
     restart: unless-stopped
     networks:
@@ -18,7 +18,7 @@ services:
       mode: global
 
   django:
-    # will build ./django/Dockerfile
+    image: 10.129.4.176:5000/stackweb:django
     build: ./django
     volumes:
       - static:/app/G7/G7App/static
@@ -30,7 +30,7 @@ services:
       mode: global
   
   nginx:
-    # will build ./nginx/Dockerfile
+    image: 10.129.4.176:5000/stackweb:nginx
     build: ./nginx
     volumes:
       - static:/usr/share/nginx/html/static
@@ -49,3 +49,8 @@ networks:
 
 volumes:
   static:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: /storage/nfs/website/volumes
