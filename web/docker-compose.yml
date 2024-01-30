@@ -5,7 +5,6 @@ services:
     build: ./django
     volumes:
       - /storage/nfs/website/volumes:/app/G7/G7App/static
-    restart: unless-stopped
     networks:
      - back
     hostname: django
@@ -17,7 +16,6 @@ services:
     build: ./nginx
     volumes:
       - /storage/nfs/website/volumes:/usr/share/nginx/html/static
-    restart: unless-stopped
     networks:
       - back
     hostname: nginx
@@ -27,9 +25,8 @@ services:
       mode: global
 
   proxy:
-    image: 10.129.4.176:5000/stackweb:web_proxy_1
+    image: 10.129.4.176:5000/stackweb:web_proxy
     build: ./HAProxy
-    restart: unless-stopped
     networks:
      - back
     ports:
