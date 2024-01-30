@@ -14,7 +14,11 @@ services:
     depends_on:
      - "django"
      - "nginx"
-  
+    deploy:
+      mode: replicated
+      replicas: 4
+      endpoint_mode: vip
+
   django:
     # will build ./django/Dockerfile
     build: ./django
@@ -24,6 +28,8 @@ services:
     networks:
      - back_django
     hostname: django
+    deploy:
+      mode: global
   
   nginx:
     # will build ./nginx/Dockerfile
@@ -36,6 +42,8 @@ services:
     hostname: nginx
     depends_on:
       - "django"
+    deploy:
+      mode: global
 
 networks:
   back_nginx:
