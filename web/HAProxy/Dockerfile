@@ -1,4 +1,4 @@
-FROM haproxy:latest
+FROM haproxy:2.9.3
 
 RUN mkdir /var/lib/haproxy/run
 

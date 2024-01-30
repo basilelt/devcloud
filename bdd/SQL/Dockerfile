@@ -1,5 +1,5 @@
 # Use the official MySQL image as the base image
-FROM mysql:latest
+FROM mysql:8.3.0
 
 # Set the MySQL root password
 ENV MYSQL_ROOT_PASSWORD=RootSQLG7
