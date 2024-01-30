@@ -1,0 +1,14 @@
+  proxy:
+    image: 10.129.4.176:5000/stackweb:web_proxy
+    build: ./HAProxy
+    networks:
+     - back
+    ports:
+     - "80:80"
+    sysctls:
+     - net.ipv4.ip_unprivileged_port_start=0
+    depends_on:
+     - "django"
+     - "nginx"
+    deploy:
+      mode: global

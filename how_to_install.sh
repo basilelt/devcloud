@@ -8,7 +8,6 @@ cp -R /storage/nfs/website/devcloud/web/django/django/G7/G7App/static/* /storage
 hostnamectl set-hostname web1g1
 cd /storage/nfs/website/devcloud/web/
 
-docker service create --name registry --publish published=5000,target=5000 registry:2
 cat > /etc/docker/daemon.json <<EOF
 {
   "insecure-registries" : ["10.129.4.176:5000"]
