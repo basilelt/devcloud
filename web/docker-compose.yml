@@ -10,6 +10,8 @@ services:
     hostname: django
     deploy:
       mode: global
+    expose:
+      - 8000
   
   nginx:
     image: 10.129.4.176:5000/stackweb:web_nginx
@@ -23,6 +25,7 @@ services:
       - "django"
     deploy:
       mode: global
-
+    expose:
+      - 8080
 networks:
   back:
