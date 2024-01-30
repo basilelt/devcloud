@@ -11,7 +11,7 @@ services:
     deploy:
       mode: global
     ports:
-      - "8000:8000"
+      - "8888:8000"
   
   nginx:
     image: 10.129.4.176:5000/stackweb:web_nginx
